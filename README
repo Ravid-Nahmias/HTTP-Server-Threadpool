@@ -1,0 +1,62 @@
+README
+Name: Ravid Nahmias
+Id: 316032515
+
+Exercise 3 - Server Socket 
+
+===Description ===
+
+Description of the program:
+    In this program we have 2 source files, server and threadpool.
+    The server should handle the connections with the clients, there is only one Socket
+    where the server listens, and in order to enable multithreaded program, the server
+    the server creates the pool of threads in advanced and each time it needs a thread to
+    handle a client connection, it take one from the pool or enqueue the request if there is no
+    available thread in the pool.
+ 
+
+===Program files:===
+1. server.c - contains all the funcations and their implements of the server.
+2. threadpool.c - contains all the funcations and their implements of the threadpool.
+
+===server.c funcation:===
+	1. freeAll- free al the memory allocation and close the socket
+    2. systemError - print errors of system functions happening before starting handling a client 
+    3. commandError- function for errors in the input
+    4. currentTime - returns a string of the current date and time
+    5. lastModifiedTime- returns a string of the last modified date and time of a file 
+    6. get_mime_type- returns a string with the type of the file
+    7. buildResponse- build a string that contains the response to the client without the body
+    8. error302- when the client requeseted a dir but forgot a / in the end 
+    9. error400- r. In case the request is wrong, when the request has less or more than 3 arguments, or the last argument is not an http version
+    10. error403- when the permission of the path are not right
+    11. error404 - when the file does not exist
+    12. error500 - system funcations errors after starting handling a client
+    13. error501 - not a GET requeset
+    14. substring - this function return a sub string of s from start to end indexes
+    15. splitTheCommand - split the command into a char**
+    16. checkValidTokens - check the validity of the first and last tokens
+    17. numberOfFilesInDir - counts how many files there are in the directory to know the size of the buf e will create
+    18. checkPermissions - checks if a certain path has the right permissions
+    19. buildDirContent - bulid the html file that contain the contents of the directory
+    20. bringFile - read the asked file and returns it to the client
+    21. checkIfDir - check if the file index.html exist in the dir, if not build one
+    22. pathAnalysis - analysis the path given and returns the requested file
+    23. handleClient - the function that the thread sent to
+
+
+===threadpool.c funcation:===
+    1. create threadpool - initialize the threadpool
+    2. do_work - The work function of the thread
+    3. dispatch - dispatch enter a "job" of type work_t into the queue.
+    4. destroy_threadpool - kills the threadpool
+
+
+If you want to compile the program:
+gcc -g threadpool.c server.c -o ex3 -Wall -Wvla -lpthread
+
+If you want to run the program:
+./server <port> <pool-size> <max-number-of-request>
+
+
+
