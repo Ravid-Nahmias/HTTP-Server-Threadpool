@@ -10,7 +10,7 @@ Description of the program:
     In this program we have 2 source files, server and threadpool.
     The server should handle the connections with the clients, there is only one Socket
     where the server listens, and in order to enable multithreaded program, the server
-    the server creates the pool of threads in advanced and each time it needs a thread to
+    creates the pool of threads in advanced and each time it needs a thread to
     handle a client connection, it take one from the pool or enqueue the request if there is no
     available thread in the pool.
  
